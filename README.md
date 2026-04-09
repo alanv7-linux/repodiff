@@ -1,4 +1,4 @@
-# repodata_diff.py
+# repodiff.py
 
 一个小工具：**对比两次 `repodata`（准确说是两份 `repomd.xml` 所指向的 `primary.xml.*`）**，列出增量 RPM 包（新增/删除/版本变化）。
 
@@ -32,7 +32,7 @@
 运行：
 
 ```bash
-python3 repodata_diff.py \
+python3 repodiff.py \
   --old /data/snapshots/repo_2026-02-01 \
   --new /data/snapshots/repo_2026-02-06
 ```
@@ -40,7 +40,7 @@ python3 repodata_diff.py \
 如需同时输出删除/版本变化：
 
 ```bash
-python3 repodata_diff.py \
+python3 repodiff.py \
   --old /data/snapshots/repo_2026-02-01 \
   --new /data/snapshots/repo_2026-02-06 \
   --show-removed \
@@ -50,7 +50,7 @@ python3 repodata_diff.py \
 ### 2) 直接对比两个 URL（当你确实有两个 URL 时）
 
 ```bash
-python3 repodata_diff.py \
+python3 repodiff.py \
   --old https://example.com/repo_snap_1/ \
   --new https://example.com/repo_snap_2/
 ```
@@ -58,7 +58,7 @@ python3 repodata_diff.py \
 ### 3) 也可以直接传 `repodata/repomd.xml`
 
 ```bash
-python3 repodata_diff.py \
+python3 repodiff.py \
   --old /data/snapshots/repo_2026-02-01/repodata/repomd.xml \
   --new /data/snapshots/repo_2026-02-06/repodata/repomd.xml
 ```
@@ -66,7 +66,7 @@ python3 repodata_diff.py \
 ### 4) JSON 输出（便于二次处理）
 
 ```bash
-python3 repodata_diff.py --old OLD --new NEW --json > diff.json
+python3 repodiff.py --old OLD --new NEW --json > diff.json
 ```
 
 ### 5) `--old` / `--new` 直接传归档文件
@@ -82,7 +82,7 @@ python3 repodata_diff.py --old OLD --new NEW --json > diff.json
 示例：
 
 ```bash
-python3 repodata_diff.py \
+python3 repodiff.py \
   --old /data/snapshots/repo_old.tar.xz \
   --new /data/snapshots/repo_new.zip
 ```
@@ -108,7 +108,7 @@ python3 repodata_diff.py \
 如果你希望把“新仓库的 repodata + Added 的 RPM 包”一起下载到本地，使用 `--download`：
 
 ```bash
-python3 repodata_diff.py \
+python3 repodiff.py \
   --old old --new new \
   --download \
   --dir ./repo
@@ -137,7 +137,7 @@ python3 repodata_diff.py \
 示例：
 
 ```bash
-python3 repodata_diff.py \
+python3 repodiff.py \
   --old old.tar.gz \
   --new https://example.com/repo/ \
   --download \
